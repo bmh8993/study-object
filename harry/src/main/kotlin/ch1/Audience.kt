@@ -6,6 +6,6 @@ class Audience(
     fun getBag(): Bag = bag
 
     fun buy(ticket:Ticket): Long {
-        bag.hold(ticket)
+        return bag.hold(ticket)
     }
 }
