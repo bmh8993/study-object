@@ -1,4 +1,7 @@
 package ch1
 
-class Invitation {
-}
+import java.time.LocalDateTime
+
+class Invitation(
+    private val date: LocalDateTime
+)

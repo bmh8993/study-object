@@ -1,4 +1,7 @@
 package ch1
 
-class Ticket {
+class Ticket(
+    private val fee: Long
+) {
+    fun getFee(): Long = fee
 }
