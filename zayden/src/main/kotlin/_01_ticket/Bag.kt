@@ -7,19 +7,29 @@ class Bag(
 
     var ticket: Ticket? = null
 
-    fun hasInvitation(): Boolean {
+    private fun hasInvitation(): Boolean {
         return invitation != null
     }
 
-    fun hasTicket(): Boolean {
-        return ticket != null
-    }
-
-    fun minusAmount(amount: Long) {
+    private fun minusAmount(amount: Long) {
         this.amount -= amount
     }
 
-    fun plusAmount(amount: Long) {
+    private fun plusAmount(amount: Long) {
         this.amount += amount
+    }
+
+    fun hold(ticket: Ticket): Long {
+        return when (hasInvitation()) {
+            true -> {
+                this.ticket = ticket
+                0L
+            }
+            false -> {
+                this.ticket = ticket
+                minusAmount(ticket.fee)
+                ticket.fee
+            }
+        }
     }
 }
