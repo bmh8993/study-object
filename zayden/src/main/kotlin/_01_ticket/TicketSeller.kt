@@ -3,15 +3,9 @@ package _01_ticket
 class TicketSeller(
     val ticketOffice: TicketOffice
 ) {
+    // 수정 전: audience는 여전히 자율적인 존재가 아니다.
+    // 수정 후: audience는 자율적인 존재가 되었다.
     fun sellTo(audience: Audience) {
-        if (audience.bag.hasInvitation()) {
-            val ticket = ticketOffice.getTicket()
-            audience.bag.ticket = ticket
-        } else {
-            val ticket = ticketOffice.getTicket()
-            audience.bag.minusAmount(ticket.fee)
-            ticketOffice.plusAmount(ticket.fee)
-            audience.bag.ticket = ticket
-        }
+        ticketOffice.plusAmount(audience.buy(ticketOffice.getTicket()))
     }
 }
