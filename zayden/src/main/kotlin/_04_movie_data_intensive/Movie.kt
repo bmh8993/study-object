@@ -12,41 +12,17 @@ import java.time.LocalDateTime
  * 영화 요금을 계산하는 메서드, 할인 여부를 판단하는 메서드
  */
 class Movie(
-    _title: String,
-    _runningTime: Duration,
-    _fee: Money,
-    _discountConditions: List<DiscountCondition>
+    private val title: String,
+    private val runningTime: Duration,
+    private val fee: Money,
+    private val discountConditions: List<DiscountCondition>
 ) {
-    var title = _title
-        private set
-    var runningTime = _runningTime
-        private set
-    var fee = _fee
-        private set
-    var discountConditions = _discountConditions
-        private set
     var movieType: MovieType = MovieType.NONE_DISCOUNT
         private set
     var discountAmount: Money = Money.ZERO
         private set
     var discountPercent: Double = 0.0
         private set
-
-    fun changeTitle(title: String) {
-        this.title = title
-    }
-
-    fun changeRunningTime(runningTime: Duration) {
-        this.runningTime = runningTime
-    }
-
-    fun changeFee(fee: Money) {
-        this.fee = fee
-    }
-
-    fun changeDiscountConditions(discountConditions: List<DiscountCondition>) {
-        this.discountConditions = discountConditions
-    }
 
     fun changeMovieType(movieType: MovieType) {
         this.movieType = movieType

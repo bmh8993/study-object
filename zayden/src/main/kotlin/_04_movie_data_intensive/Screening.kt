@@ -7,29 +7,10 @@ import java.time.LocalDateTime
  * 상영 시 요금을 계산 하는 메서드
  */
 class Screening(
-    _movie: Movie,
-    _sequence: Int,
-    _whenScreened: LocalDateTime
+    private val movie: Movie,
+    private val sequence: Int,
+    private val whenScreened: LocalDateTime
 ) {
-    var movie = _movie
-        private set
-    var sequence = _sequence
-        private set
-    var whenScreened = _whenScreened
-        private set
-
-    fun changeMovie(movie: Movie) {
-        this.movie = movie
-    }
-
-    fun changeSequence(sequence: Int) {
-        this.sequence = sequence
-    }
-
-    fun changeWhenScreened(whenScreened: LocalDateTime) {
-        this.whenScreened = whenScreened
-    }
-
     fun calculateFee(audienceCount: Int): Money {
         when (movie.movieType) {
             MovieType.AMOUNT_DISCOUNT -> {
