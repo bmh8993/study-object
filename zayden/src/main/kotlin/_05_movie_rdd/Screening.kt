@@ -7,7 +7,13 @@ class Screening(
     val sequence: Int,
     val whenScreened: LocalDateTime
 ) {
+    fun getStartTime(): LocalDateTime {
+        return this.whenScreened
+    }
 
+    fun isSequence(sequence: Int): Boolean {
+        return this.sequence == sequence
+    }
     fun reserve(customer: Customer, audienceCount: Int): Reservation {
         return Reservation(
             customer = customer,

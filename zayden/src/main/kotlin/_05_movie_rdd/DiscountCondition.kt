@@ -1,29 +1,12 @@
 package _05_movie_rdd
 
-import java.time.DayOfWeek
-import java.time.LocalTime
+/**
+ * 변경 전
+ * DiscountCondition은 응집도가 매우 낮다.
+ * 1. 객체의 모든 property를 초기화 하지 않는다. 즉, type에 따라 일부만 초기화한다.
+ * 2. 특정 메서드는 특정 property만을 사용한다.
+ */
 
-class DiscountCondition(
-    val type: DiscountConditionType,
-    private val sequence: Int,
-    private val dayOfWeek: DayOfWeek,
-    private val startTime: LocalTime,
-    private val endTime: LocalTime
-) {
-    fun isSatisfiedBy(screening: Screening): Boolean {
-        if (type == DiscountConditionType.PERIOD) {
-            return isSatisfiedByPeriod(screening)
-        }
-        return isSatisfiedBySequence(screening)
-    }
-
-    private fun isSatisfiedBySequence(screening: Screening): Boolean {
-        return sequence == screening.sequence
-    }
-
-    private fun isSatisfiedByPeriod(screening: Screening): Boolean {
-        return dayOfWeek == screening.whenScreened.dayOfWeek &&
-            startTime <= screening.whenScreened.toLocalTime() &&
-            endTime >= screening.whenScreened.toLocalTime()
-    }
+abstract class DiscountCondition {
+    abstract fun isSatisfiedBy(screening: Screening): Boolean
 }
