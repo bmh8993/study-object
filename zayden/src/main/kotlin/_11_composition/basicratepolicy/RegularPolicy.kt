@@ -1,4 +1,4 @@
-package _11_composition.policy
+package _11_composition.basicratepolicy
 
 import _11_composition.Call
 import _11_composition.Money
