@@ -1,24 +1,22 @@
 package _10_call
 
-import java.time.Duration
+abstract class Phone(open val taxRate: Double) {
 
-class Phone(
-    val amount: Money,
-    val seconds: Duration
-) {
-    val calls: ArrayList<Call> = arrayListOf()
-
-    fun call(call: Call) {
-        calls.add(call)
-    }
+    private val calls: ArrayList<Call> = arrayListOf()
 
     fun calculateFee(): Money {
         var result = Money.ZERO
 
         for (call in calls) {
-            result = result.plus(amount.times(call.duration.seconds.toDouble() / seconds.seconds))
+            result = result.plus(calculateCallFee(call))
         }
 
-        return result
+        return result.plus(result.times(taxRate))
     }
+
+    fun call(call: Call) {
+        calls.add(call)
+    }
+
+    abstract fun calculateCallFee(call: Call): Money
 }
