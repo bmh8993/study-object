@@ -9,7 +9,7 @@ class CreatePhoneUseCase {
             TaxablePolicy(0.05,
                 RegularPolicy(Money(BigDecimal.TEN), Duration.ZERO)
             ),
-            emptyArray()
+            ArrayList<Call>()
         )
     }
 }
