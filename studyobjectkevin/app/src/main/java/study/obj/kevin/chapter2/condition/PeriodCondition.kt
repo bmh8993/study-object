@@ -1,7 +1,7 @@
 package study.obj.kevin.chapter2.condition
 
+import DiscountCondition
 import study.obj.kevin.chapter2.Screening
-import study.obj.kevin.chapter2.policy.DiscountCondition
 import java.time.DayOfWeek
 import java.time.LocalTime
 
